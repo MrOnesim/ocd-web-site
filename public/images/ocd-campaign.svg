@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#f77700"/>
+  <g stroke="#161512" stroke-width="1" opacity=".12"><path d="M0 100H800M0 200H800M0 300H800M0 400H800M0 500H800M0 600H800M0 700H800M0 800H800M0 900H800M100 0V1000M200 0V1000M300 0V1000M400 0V1000M500 0V1000M600 0V1000M700 0V1000"/></g>
+  <text x="66" y="96" fill="#161512" font-family="Arial,sans-serif" font-weight="700" font-size="30" letter-spacing="-1">OCD</text>
+  <text x="733" y="91" fill="#161512" font-family="Arial,sans-serif" font-size="13" text-anchor="end" letter-spacing="2">VOTRE ACTIVITÉ. VOTRE SCÈNE.</text>
+  <text x="57" y="300" fill="#161512" font-family="Arial,sans-serif" font-weight="800" font-size="128" letter-spacing="-8">À VOUS</text>
+  <text x="57" y="422" fill="#161512" font-family="Arial,sans-serif" font-weight="800" font-size="128" letter-spacing="-8">DE</text>
+  <text x="57" y="544" fill="#161512" font-family="Arial,sans-serif" font-weight="800" font-size="128" letter-spacing="-8">BRILLER.</text>
+  <g transform="translate(480 650)" stroke="#fff7ed" stroke-width="32" fill="none"><path d="M0 0H180V180M0 180L180 0"/></g>
+  <path d="M65 898H735" stroke="#161512"/>
+  <text x="65" y="941" fill="#161512" font-family="Arial,sans-serif" font-size="17">Promotion commerciale · Visibilité numérique</text>
+  <text x="735" y="941" text-anchor="end" fill="#161512" font-family="Arial,sans-serif" font-size="12">ÉTUDE GRAPHIQUE</text>
+</svg>
