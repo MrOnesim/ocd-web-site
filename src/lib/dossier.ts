@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import { plans, type PlanId } from "@/data/content";
 
 export type ProjectForm = {
@@ -9,7 +10,14 @@ export type ProjectForm = {
   extras: string[];
 };
 
-export const emptyProject: ProjectForm = { name: "", business: "", contact: "", date: "", message: "", extras: [] };
+export const emptyProject: ProjectForm = {
+  name: "",
+  business: "",
+  contact: "",
+  date: "",
+  message: "",
+  extras: [],
+};
 
 export function localToday() {
   const now = new Date();
@@ -27,13 +35,18 @@ export function validateProject(values: ProjectForm) {
 
 export function createDossier(values: ProjectForm, selectedPlan: PlanId) {
   const plan = plans.find((item) => item.id === selectedPlan);
+  const officialChannels = [
+    siteConfig.contacts.whatsappDisplay ? `WhatsApp ${siteConfig.contacts.whatsappDisplay}` : "",
+    siteConfig.contacts.email || "",
+  ].filter(Boolean);
+
   return [
     "OCD | DOSSIER DE PRÉSENTATION DE MON PROJET",
     "Votre activité mérite d'être vue.",
     "",
     `Nom : ${values.name.trim()}`,
     `Entreprise / activité : ${values.business.trim()}`,
-    `Contact : ${values.contact.trim() || "À compléter"}`,
+    `Contact : ${values.contact.trim() || "À préciser lors de l'échange"}`,
     "",
     `Formule envisagée : ${plan?.fullName ?? "À définir ensemble"}`,
     `Durée : ${plan ? plan.duration + (plan.id === "intensive" ? " dans la semaine" : "") : "À définir"}`,
@@ -45,21 +58,41 @@ export function createDossier(values: ProjectForm, selectedPlan: PlanId) {
     values.message.trim(),
     "",
     "INFORMATIONS IMPORTANTES",
-    "Ce dossier est préparé localement. Il n'a pas été transmis à OCD et ne constitue ni une réservation ni une confirmation de prestation.",
+    "Ce dossier est préparé localement. Il n'a pas été transmis à OCD automatiquement et ne constitue ni une réservation ni une confirmation de prestation.",
     "Tarifs indicatifs à confirmer officiellement. Les prestations complémentaires ne sont pas chiffrées et ne sont pas incluses dans le tarif indiqué.",
     "La date, les conditions et les modalités de réservation devront être confirmées avec l'équipe.",
-    "Les coordonnées officielles d'OCD restent à compléter.",
+    officialChannels.length
+      ? `Canaux de contact OCD : ${officialChannels.join(" · ")}.`
+      : "Les coordonnées officielles d'OCD restent à compléter.",
     "Aucune audience, aucun contact commercial et aucune vente ne sont garantis.",
   ].join("\n");
 }
 
-export function downloadDossier(text: string) {
+/**
+ * Construit un lien wa.me fiable même lorsque la description du projet est longue
+ * (limite la taille de l'URL pour éviter les rejets sur mobile / WhatsApp Web).
+ */
+export function createWhatsAppUrl(phone: string, text: string) {
+  const digits = phone.replace(/[^0-9]/g, "");
+  const maxChars = 1800;
+  const safeText =
+    text.length > maxChars
+      ? `${text.slice(0, maxChars).trimEnd()}\n\n[Suite disponible dans mon dossier .txt]`
+      : text;
+  return `https://wa.me/${digits}?text=${encodeURIComponent(safeText)}`;
+}
+
+export function downloadTextFile(text: string, filename = "OCD-Live-confirmation.txt") {
   const url = URL.createObjectURL(new Blob(["\uFEFF", text], { type: "text/plain;charset=utf-8" }));
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = "OCD-mon-projet.txt";
+  anchor.download = filename;
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+export function downloadDossier(text: string) {
+  downloadTextFile(text, "OCD-mon-projet.txt");
 }

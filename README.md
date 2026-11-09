@@ -1,95 +1,57 @@
-# OCD
+# OCD Live — Plateforme Commerciale & Réservation de Lives (House of Challenge / Bovann Shop)
 
-Site de présentation d'OCD : promotion commerciale, lives et visibilité numérique pour les entrepreneurs.
-Réalisé avec React, TypeScript, Vite et Tailwind CSS. L'entrée est `src/App.tsx`.
+Plateforme complète de promotion commerciale, de visibilité numérique et de réservation de diffusions en direct sur le compte officiel **House of Challenge**, conçue selon la vision de **Bovann** pour les entrepreneurs du **Togo**, d'**Afrique** et de l'**International**.
 
-## Démarrage
+## Démarrage rapide
 
 ```bash
 npm install
-npm run dev
+npm run dev      # Développement (Front React + API Node + Base SQLite sur le même port)
+npm run check    # Typecheck + Tests unitaires/API/SSR + Build SEO + Vérification dist/
+```
+
+### Déploiement en production
+
+```bash
 npm run build
-node scripts/verify-dist.mjs
+npm start        # Serveur Node complet (sert dist/ + /api/* + SPA /admin sur 0.0.0.0:3000)
 ```
 
-> **Déploiement :** publier le dossier `dist/` entier, pas uniquement `dist/index.html`.
-> Les photos, la vidéo et le logo sont des fichiers séparés ; `verify-dist.mjs` échoue
-> explicitement si l'un d'eux manque.
+---
 
-## Contenu et configuration
+## Fonctionnalités clés de la plateforme
 
-- `src/config/site.ts` : coordonnées, réservation et mesure d'audience. Les champs inconnus
-  restent vides — ne pas inventer d'adresse, d'audience ni de résultat.
-- `src/data/content.ts` : services, secteurs, formules, FAQ, ambitions, témoignages à venir.
-- `src/index.css`, `motion.css`, `features.css` : identité orange, animations, modules récents.
-- `public/` : images du projet, vidéo MP4 locale, fichier de licence de la police et logo.
+### 1. Deux modes de participation dès l'arrivée (`#participation`)
+- **Catégorie A — Live en Présentiel (Togo · Locaux Bovann Shop)** : l'entrepreneur se déplace physiquement à Lomé avec ses produits (ex. restaurateur avec 30 à 45 portions), accueilli et co-animé sur place avec nos **assistantes des lives OCD**.
+- **Catégorie B — Live à Distance (Afrique & International)** : conçu pour les entrepreneurs situés au **Cameroun, Tchad, Centrafrique**, en Afrique de l'Ouest/Centrale et dans la diaspora, portés à l'écran par **une assistante des lives OCD dédiée présente au Togo**.
 
-### Coordonnées officielles
+### 2. Système de réservation interactif en 6 étapes (`#reservation`)
+1. **Choix du mode de live** (*Présentiel Togo* ou *À distance International*).
+2. **Calendrier mensuel interactif** (ouvert à partir du **1er décembre**, pilotable par l'admin) affichant clairement les dates *Disponibles*, *Partiellement réservées*, *Déjà réservées (Complet)* et *Indisponibles*.
+3. **Sélection du créneau horaire** adapté à la durée du forfait (`1h30`, `2h00`, `4h00`) avec **verrouillage transactionnel anti-double-réservation** (`BEGIN IMMEDIATE` SQLite + détection de chevauchement d'horaires).
+4. **Sélection parmi les 6 packages commerciaux**.
+5. **Fiche complète participant & entreprise** (identité, téléphone, WhatsApp, e-mail, pays avec indicatif auto, ville, entreprise, secteur, produits/services, adresse physique, numéro pro, réseaux sociaux, préparation) + **Aperçu temps réel du Bandeau TV de visibilité en direct**.
+6. **Récapitulatif & Confirmation officielle** : attribution d'une référence unique (`OCD-YYYYMMDD-XXXX`), téléchargement `.txt`, invitation calendrier `.ics` (*Ajouter à mon agenda*), passerelle WhatsApp directe et suivi ultérieur via **« Suivre ma réservation »**.
 
-Renseigner WhatsApp, e-mail, téléphone, adresse, réseaux sociaux et URL canonique dans
-`siteConfig`. Mettre `booking.enabled` à `true` uniquement après avoir branché et testé une
-réservation réelle. Aujourd'hui, le formulaire prépare un dossier **local** : aucun envoi,
-paiement ou créneau confirmé.
+### 3. Les 6 Packages Commerciaux administrables (`#formules` & `/admin`)
+1. **Formule Découverte** — `15 000 FCFA` (`1h30`)
+2. **Formule Business** — `20 000 FCFA` (`1h30` + bandeau complet coordonnées/adresse + 2 stories)
+3. **Visibilité Renforcée** — `35 000 FCFA` (`2h00` + affiche digitale + publication dédiée + 4 stories)
+4. **Immersion 4 Heures** — `45 000 FCFA` (`4h00` consécutives à tarif préférentiel)
+5. **Formule VIP Projecteur** — `65 000 FCFA` (`4h00` + annonce officielle 48h avant + campagne teasing)
+6. **Partenaire Mensuel** — `150 000 FCFA` (`4 lives × 2h00 / mois` + campagne 30 jours)
 
-### Mesure d'audience
+Tous les prix, durées, intitulés, badges et avantages sont modifiables à chaud depuis l'espace administrateur.
 
-Aucun outil ni script tiers n'est chargé. Les événements sont mis en file dans
-`window.__OCD_EVENTS` (100 derniers) et transmis à Umami ou au `dataLayer` **seulement** si
-`siteConfig.analytics.provider` est configuré. `track()` respecte Do Not Track. Événements :
-`plan_select`, `plan_form_select`, `dossier_generated`, `dossier_copied`, `dossier_downloaded`,
-`sector_filter`, `live_demo_step`, `live_demo_toggle`, `faq_open`, `voice_cta_click`.
-
-## Données et transparence
-
-- Les tarifs (5 000, 15 000, 40 000 FCFA) sont **indicatifs** et à confirmer officiellement.
-- L'audience de House of Challenge est **annoncée** (3 à 4 millions d'abonnés) et ne garantit
-  ni spectateurs, ni contacts, ni ventes.
-- Les images sont des illustrations ; elles ne montrent ni clients, ni locaux, ni réalisations
-  OCD. Elles sont générées par IA. La vidéo est un extrait Pexels montrant une préparation de tournage, et non un vrai live OCD. Les crédits sont dans la fenêtre
-  « Informations & transparence ».
-- Aucun témoignage n'est publié avant d'avoir été recueilli avec accord ; l'emplacement est
-  actuellement un espace explicite « retours à venir ».
-- Le brouillon du formulaire est **optionnel**, stocké dans `localStorage` et effaçable.
-  Il n'est jamais envoyé.
-
-## Images et vidéo
-
-`src/data/content.ts` référence exclusivement des images présentes dans `public/images/`.
-`<SmartImage>` utilise directement ces fichiers et se replie sur l'image d'accueil puis sur un dégradé si une image ne répond pas.
-`public/videos/live-commerce-demo.mp4` est une vidéo locale accessible par le lecteur natif dans « Aperçu d'un live ». Un second `<source>` Pexels est proposé en secours.
-
-## SEO et partage
-
-- Métadonnées Open Graph/Twitter avec l'image réelle `public/images/ocd-live-hero.jpg`.
-- Données structurées `Organization`, `Service` et `FAQPage` dans `index.html`.
-- `public/sitemap.xml` n'est pas généré tant que le domaine est inconnu :
-
-```bash
-SITE_URL="https://votre-domaine.tld" node scripts/generate-sitemap.mjs
-```
-
-Déclarer ensuite le sitemap dans `robots.txt` et l'URL canonique dans `siteConfig.url`.
-
-## Vérification
-
-```bash
-npx tsc --noEmit
-npx playwright install --with-deps chromium
-npx playwright test
-```
-
-12 tests couvrent : contenu, six services, formules et présélection, génération/copie/téléchargement
-du dossier, brouillon local, aperçu de live, filtres par secteur, FAQ, témoignages, navigation
-animée, modales, responsive, images locales, lecture vidéo et accessibilité axe-core (A/AA).
-
-Les tests tournent avec `prefers-reduced-motion: reduce` par défaut ; deux tests dédiés réactivent
-les animations. Un audit automatisé ne remplace pas une évaluation humaine.
-
-## Performance en production
-
-```bash
-npx @lhci/cli autorun
-```
-
-`lighthouserc.json` définit des budgets (accessibilité, LCP, CLS, poids total) sur `dist/`.
-Installer Lighthouse CI est volontairement laissé à la CI pour ne pas alourdir l'application.
+### 4. Tableau de bord administratif sécurisé (`/admin`)
+Accessible via `/admin` (ou le bouton *Admin* dans l'en-tête / pied de page) :
+- **Identifiants initiaux par défaut** :
+  - E-mail : `admin@ocdlive.org` (modifiable via `ADMIN_EMAIL`)
+  - Mot de passe : `OcdLive2026!` (modifiable depuis l'onglet *Paramètres & Sécurité* ou via `ADMIN_PASSWORD`)
+- **Rubriques incluses** :
+  - **Vue générale** : KPIs réservations, répartition Présentiel/Distanciel, répartition par Pays & Forfaits, CA prévisionnel & encaissé, prochains lives.
+  - **Réservations & Participants** : filtres multicritères, fiche complète, validation/annulation en un clic, suivi des paiements (*Mobile Money, Flooz, TMoney, Orange Money, Espèces…*), affectation de l'assistante, contact WhatsApp client en 1 clic et **Export CSV/Excel**.
+  - **Lives programmés & Historique**.
+  - **Dates & Disponibilités** : date de lancement, jours d'ouverture, grille horaire, exceptions de dates et blocage de créneaux.
+  - **Les 6 Forfaits** : édition complète en temps réel.
+  - **Notifications** : centre d'alertes intégré enregistrant automatiquement chaque notification administration (au format narratif exact souhaité par Bovann) et chaque confirmation participant, doublé d'un envoi e-mail automatique dès que `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER` et `SMTP_PASS` sont renseignés.

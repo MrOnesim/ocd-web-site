@@ -1,206 +1,324 @@
+import { siteConfig } from "@/config/site";
+import { DEFAULT_PACKAGES } from "@/data/packages";
+
 export const project = {
-  name: "OCD",
-  tagline: "Votre activité mérite d'être vue.",
-  domain: "Promotion commerciale · Publicité · Visibilité numérique",
-};
+  name: siteConfig.name,
+  tagline: siteConfig.tagline,
+  domain: siteConfig.domain,
+} as const;
 
 export const navItems = [
-  { n: "01", label: "Le projet", href: "#projet" },
-  { n: "02", label: "Nos services", href: "#services" },
-  { n: "03", label: "Aperçu d'un live", href: "#apercu-live" },
-  { n: "04", label: "Pour qui ?", href: "#pour-qui" },
-  { n: "05", label: "Comment ça marche", href: "#fonctionnement" },
-  { n: "06", label: "Nos formules", href: "#formules" },
-  { n: "07", label: "Notre écosystème", href: "#ecosysteme" },
-  { n: "08", label: "Questions fréquentes", href: "#faq" },
-  { n: "09", label: "Rejoindre l'aventure", href: "#contact" },
-];
+  { n: "01", label: "Présentiel ou À distance", href: "#participation" },
+  { n: "02", label: "Réserver un live", href: "#reservation" },
+  { n: "03", label: "Les 6 forfaits", href: "#formules" },
+  { n: "04", label: "Visibilité commerciale", href: "#services" },
+  { n: "05", label: "Aperçu d'un live", href: "#apercu-live" },
+  { n: "06", label: "Pour qui ?", href: "#pour-qui" },
+  { n: "07", label: "Comment ça marche", href: "#fonctionnement" },
+  { n: "08", label: "Écosystème & Assistantes", href: "#ecosysteme" },
+  { n: "09", label: "Questions fréquentes", href: "#faq" },
+] as const;
 
 export const mission = [
-  "Donner de la visibilité aux entrepreneurs et aux commerçants.",
-  "Faciliter la promotion des produits et des services.",
-  "Permettre aux entreprises de présenter directement leurs activités.",
-  "Favoriser les interactions entre vendeurs et consommateurs.",
-  "Générer des opportunités commerciales et de nouveaux prospects.",
-  "Rendre la publicité numérique plus accessible.",
-];
+  "Offrir une visibilité immédiate aux entrepreneurs d'Afrique et du monde sur House of Challenge.",
+  "Présenter les produits, l'entreprise, le numéro de téléphone et l'adresse physique en direct.",
+  "Accueillir les participants en présentiel chez Bovann Shop au Togo aux côtés de nos assistantes des lives OCD.",
+  "Porter à l'écran les entrepreneurs du Cameroun, du Tchad, de Centrafrique et d'ailleurs grâce à une assistante des lives OCD dédiée au Togo.",
+  "Valoriser les réseaux sociaux, les points de vente et les offres promotionnelles de chaque participant.",
+  "Rendre le marketing digital et le live commercial accessibles à tous les budgets.",
+] as const;
 
 export const services = [
   {
     id: "lives",
-    title: "Lives commerciaux",
-    short: "Votre activité, en direct.",
-    description: "Présentez vos produits, vos services et votre savoir-faire lors d'émissions en direct sur les réseaux sociaux. Un espace pour raconter votre activité et échanger avec les internautes.",
+    title: "Lives commerciaux en direct",
+    short: "En présentiel au Togo ou à distance dans le monde.",
+    description:
+      "Diffusez votre activité sur le compte officiel House of Challenge. Sur place dans les locaux de Bovann Shop au Togo ou à distance, accompagné par une assistante des lives OCD qui met vos offres en valeur.",
     image: "/images/ocd-live-hero.jpg",
     alt: "Illustration d'une entrepreneuse présentant un produit devant une caméra",
-    position: "76% center",
+    position: "74% 12%",
   },
   {
-    id: "promotion",
-    title: "Publicité & promotion",
-    short: "Faites connaître votre univers.",
-    description: "Mettez en avant votre entreprise, vos offres et vos points de vente pour renforcer votre visibilité et permettre à de nouveaux consommateurs de vous découvrir.",
+    id: "coordonnees",
+    title: "Mise en avant entreprise & contacts",
+    short: "Nom, téléphone, WhatsApp et adresse affichés.",
+    description:
+      "L'objectif dépasse la vente immédiate : faire connaître votre marque, diffuser votre numéro professionnel, votre localisation physique et vos réseaux sociaux pour attirer durablement des clients.",
     image: "/images/sector-artisan.jpg",
     alt: "Entrepreneuse dans son atelier de création textile, photographie d'illustration",
-    position: "center 35%",
+    position: "center 6%",
   },
   {
     id: "affiches",
-    title: "Affiches publicitaires",
-    short: "Une image qui vous ressemble.",
-    description: "Des supports graphiques conçus pour présenter votre activité, vos produits et vos offres commerciales de façon claire et attractive.",
+    title: "Annonces préalables & affiches",
+    short: "Préparez l'audience avant même le direct.",
+    description:
+      "Création de supports graphiques attractifs et annonce officielle préalable de votre passage pour les formules supérieures afin de mobiliser les spectateurs intéressés par votre secteur.",
     image: "/images/ocd-campaign.svg",
-    alt: "Exemple de direction graphique OCD : À vous de briller",
+    alt: "Exemple de direction graphique OCD : à vous de briller",
     position: "center",
   },
   {
     id: "stories",
-    title: "Stories promotionnelles",
-    short: "Prolongez votre présence.",
-    description: "La diffusion de contenus promotionnels en stories permet de prolonger la visibilité de vos offres, avant et après votre présentation en direct.",
+    title: "Publications & stories promo",
+    short: "Prolongez votre visibilité avant et après le live.",
+    description:
+      "La diffusion de stories et publications promotionnelles permet de rappeler vos offres, vos numéros de contact et vos adresses bien au-delà du temps d'antenne en direct.",
     image: "/images/sector-services.jpg",
     alt: "Créatrice de contenu préparant une vidéo sur son téléphone, photographie d'illustration",
-    position: "60% center",
+    position: "60% 8%",
   },
   {
     id: "produits",
-    title: "Mise en scène des produits",
-    short: "Vos produits, sous leur meilleur jour.",
-    description: "Préparation et décoration de l'espace de présentation pour créer un cadre adapté à votre univers et mettre vos produits en valeur.",
+    title: "Mise en scène & démonstration",
+    short: "Vos produits sous leur meilleur jour.",
+    description:
+      "Préparation de votre espace chez Bovann Shop au Togo (ex. 30 à 45 portions pour un restaurateur, portants mode, cosmétiques) ou valorisation soignée de vos visuels envoyés à distance.",
     image: "/images/sector-beauty.jpg",
     alt: "Mise en scène de produits cosmétiques sur des supports minéraux",
     position: "center",
   },
   {
-    id: "regie",
-    title: "Régie commerciale",
-    short: "Concentrez-vous sur votre métier.",
-    description: "L'organisation technique des diffusions et l'accompagnement pendant les présentations vous permettent de vous concentrer sur votre activité et vos échanges avec le public.",
+    id: "assistantes",
+    title: "Assistantes des Lives OCD",
+    short: "Votre ambassadrice commerciale à l'écran.",
+    description:
+      "Véritables alliées de votre passage, nos assistantes des lives OCD présentes au Togo préparent votre intervention, co-animent le direct, répondent aux spectateurs et relaient vos numéros et adresses — que vous soyez sur place ou connecté depuis le Cameroun, le Tchad, la Centrafrique ou l'international.",
     image: "/images/ocd-live-hero.jpg",
-    alt: "Opérateur derrière une caméra de diffusion, photographie d'illustration",
-    position: "38% center",
+    alt: "Animatrice et assistante commerciale lors d'une diffusion en direct, photographie d'illustration",
+    position: "68% 12%",
   },
-];
-
-export const audiences = [
-  "Entrepreneurs & promoteurs d'entreprises",
-  "Commerçants & distributeurs",
-  "Boutiques de vêtements & accessoires",
-  "Téléphones & produits électroniques",
-  "Restaurants & établissements de restauration",
-  "Artisans & créateurs",
-  "Prestataires de services",
-  "Petites, moyennes & grandes entreprises",
-];
-
-export const steps = [
-  { title: "Réservez votre créneau", text: "Choisissez la formule adaptée à vos besoins. La disponibilité du créneau et les modalités de réservation devront être confirmées avec l'équipe OCD." },
-  { title: "Préparez votre présentation", text: "Rassemblez vos produits, vos informations commerciales, vos offres et les coordonnées que vous souhaitez communiquer aux consommateurs." },
-  { title: "Installez-vous, on s'occupe du cadre", text: "L'équipe prépare l'espace de présentation et les équipements nécessaires à votre diffusion." },
-  { title: "À vous de prendre la parole", text: "Présentez votre activité pendant le live : racontez votre histoire, montrez vos produits et expliquez vos services." },
-  { title: "Échangez avec les internautes", text: "Les internautes découvrent vos offres, posent leurs questions et peuvent vous contacter directement." },
-  { title: "Transformez les rencontres en opportunités", text: "Reprenez contact avec les prospects obtenus et développez votre clientèle. Les contacts, commandes et ventes ne sont pas garantis." },
-];
-
-export const plans = [
-  { id: "decouverte", name: "Découverte", fullName: "Formule découverte", price: 5000, displayPrice: "5 000", duration: "1 heure de live", detail: "Un premier rendez-vous pour faire découvrir votre activité.", note: "Pour faire le premier pas" },
-  { id: "visibilite", name: "Visibilité", fullName: "Formule visibilité", price: 15000, displayPrice: "15 000", duration: "4 heures de live", detail: "Le temps de présenter votre univers et d'échanger avec le public.", note: "Pour prendre le temps" },
-  { id: "intensive", name: "Intensive", fullName: "Formule intensive", price: 40000, displayPrice: "40 000", duration: "3 passages de 4 heures", detail: "Plusieurs rendez-vous dans la semaine pour renforcer votre présence.", note: "Pour multiplier les rendez-vous" },
 ] as const;
 
-export type PlanId = (typeof plans)[number]["id"] | "";
+export const audiences = [
+  "Restaurateurs, traiteurs & agroalimentaire",
+  "Boutiques de prêt-à-porter, tissus & accessoires",
+  "Cosmétiques, coiffure & soins de beauté",
+  "Téléphones, électronique & équipements",
+  "Artisans, créateurs & marques locales",
+  "Prestataires de services & formations",
+  "Commerçants au Togo (présentiel Bovann Shop)",
+  "Entrepreneurs d'Afrique & de la diaspora (à distance)",
+] as const;
 
-export const extras = ["Affiche publicitaire", "Stories promotionnelles", "Décoration & mise en scène", "Accompagnement technique"];
+export const steps = [
+  {
+    title: "Choisissez Présentiel (Togo) ou À distance",
+    text: "Dès votre arrivée, sélectionnez une session physique chez Bovann Shop au Togo ou une participation à distance depuis votre pays aux côtés d'une assistante des lives OCD dédiée.",
+  },
+  {
+    title: "Sélectionnez votre date dans le calendrier",
+    text: "Consultez le calendrier mensuel interactif (ouvert dès le 1er décembre) pour visualiser immédiatement les jours disponibles et réserver votre date.",
+  },
+  {
+    title: "Réservez votre créneau horaire garanti",
+    text: "Choisissez un horaire libre adapté à la durée de votre live (1h30, 2h ou 4h). Le système verrouille automatiquement votre créneau contre toute double réservation.",
+  },
+  {
+    title: "Choisissez parmi les 6 packages commerciaux",
+    text: "Du Pack Découverte (1h30) jusqu'au Pack VIP avec annonce préalable ou au Pack Partenaire Mensuel, sélectionnez la formule adaptée à vos objectifs.",
+  },
+  {
+    title: "Renseignez la fiche de visibilité de votre entreprise",
+    text: "Indiquez vos produits, votre numéro de téléphone, votre adresse physique et vos réseaux sociaux afin que notre équipe les mette en avant pendant le direct.",
+  },
+  {
+    title: "Recevez votre confirmation & passez en direct",
+    text: "Votre inscription notifie instantanément l'administration OCD Live. Vous recevez votre référence officielle et passez en direct sur House of Challenge le jour J.",
+  },
+] as const;
+
+export const plans = DEFAULT_PACKAGES.map((pkg) => ({
+  id: pkg.id,
+  name: pkg.name.replace(/^Formule\s+/i, ""),
+  fullName: pkg.name,
+  duration: pkg.durationLabel,
+  price: pkg.priceFcfa,
+  displayPrice: pkg.priceFcfa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "),
+  note: pkg.badge,
+  detail: pkg.description,
+}));
+
+export type PlanId = string;
 
 export const pillars = [
-  { title: "Visibilité", description: "Une possibilité supplémentaire de faire découvrir votre activité à une audience numérique importante." },
-  { title: "Proximité", description: "Une présentation directe de votre univers et de vraies interactions avec les consommateurs." },
-  { title: "Accessibilité", description: "Différentes formules de promotion pour tenir compte des capacités financières des professionnels." },
-  { title: "Opportunités", description: "De nouveaux contacts commerciaux et des possibilités de vente à développer." },
-];
+  {
+    title: "Visibilité commerciale",
+    description:
+      "Faire connaître votre marque, votre téléphone et votre adresse physique bien au-delà des ventes immédiates du direct.",
+  },
+  {
+    title: "Simplicité & rapidité",
+    description:
+      "Un parcours clair sur mobile comme sur ordinateur, accessible à tous les entrepreneurs sans complexité technique.",
+  },
+  {
+    title: "Accompagnement humain dédié",
+    description:
+      "Accueil sur place chez Bovann Shop au Togo ou co-animation à distance partout en Afrique et dans le monde grâce à votre assistante des lives OCD.",
+  },
+  {
+    title: "Opportunités économiques",
+    description:
+      "Connecter les entreprises à l'audience House of Challenge tout en créant des emplois et métiers du numérique pour les jeunes.",
+  },
+] as const;
 
 export const metrics = [
-  "Nombre d'entrepreneurs accompagnés",
-  "Nombre de diffusions réalisées",
-  "Nombre de spectateurs par live",
-  "Niveau d'interaction des internautes",
-  "Nombre de contacts commerciaux générés",
-  "Commandes et ventes déclarées par les participants",
-  "Taux de satisfaction et de fidélisation des entrepreneurs",
-];
+  "Nombre d'entrepreneurs accompagnés en présentiel (Togo) et à distance (Afrique & monde).",
+  "Volume d'appels, de messages WhatsApp et de visites générés grâce à l'affichage des coordonnées.",
+  "Portée des diffusions et engagement pendant les directs sur House of Challenge.",
+  "Taux de renouvellement des entreprises partenaires sur les formules mensuelles.",
+] as const;
 
 export const ambitions = [
-  "Élargir le réseau d'entrepreneurs partenaires.",
-  "Collaborer avec d'autres communautés numériques et influenceurs.",
-  "Créer des émissions commerciales thématiques.",
-  "Organiser des campagnes promotionnelles collectives.",
-  "Développer un système de réservation en ligne.",
-  "Étendre les activités à de nouvelles villes et de nouveaux marchés.",
-];
+  "Développer des émissions thématiques par secteur d'activité et par pays africain.",
+  "Accompagner des centaines de commerçants, restaurateurs, artisans et PME chaque trimestre.",
+  "Former et employer davantage de jeunes talents en animation de lives commerciaux, accompagnement client et communication digitale.",
+  "Faire d'OCD Live la référence panafricaine de la promotion commerciale en direct.",
+] as const;
 
-/* ---------------------------------------------------------- Aperçu d'un live */
-export const liveDemo = {
-  note: "Vidéo d'illustration et parcours simulé : aucune diffusion OCD réelle n'est en cours.",
-  steps: [
-    { label: "Réservation", title: "Un créneau, une formule", text: "L'entrepreneur choisit sa formule et réserve son passage. La disponibilité et les modalités restent à confirmer avec l'équipe." },
-    { label: "Installation", title: "Le décor prend forme", text: "L'espace est préparé et décoré pour mettre les produits en valeur, avec les équipements nécessaires à la diffusion." },
-    { label: "Live", title: "Votre activité en direct", text: "L'entrepreneur présente son histoire, ses produits et ses services. La régie accompagne techniquement le direct." },
-    { label: "Échanges", title: "Les questions arrivent", text: "Les internautes découvrent les offres, posent leurs questions et peuvent contacter directement le commerçant." },
-    { label: "Contacts", title: "Les opportunités continuent", text: "Après le live, l'entrepreneur reprend contact avec les prospects. Aucun contact, ordre ou vente n'est garanti." },
+export const comparison = {
+  columns: ["Découverte", "Business", "Visibilité+", "Immersion 4h", "VIP Projecteur", "Partenaire"],
+  rows: [
+    { label: "Durée d'antenne", values: ["1h30", "1h30", "2h00", "4h00", "4h00", "4 × 2h / mois"] },
+    { label: "Tarif de référence", values: ["15 000 FCFA", "20 000 FCFA", "35 000 FCFA", "45 000 FCFA", "65 000 FCFA", "150 000 FCFA"] },
+    { label: "Présentiel Togo ou À distance", values: ["Les deux", "Les deux", "Les deux", "Les deux", "Les deux", "Les deux"] },
+    { label: "Nom entreprise & téléphone diffusés", values: ["Inclus", "Inclus", "Inclus", "Inclus", "Inclus", "Inclus"] },
+    { label: "Adresse physique & réseaux sociaux", values: ["En option", "Inclus", "Inclus", "Inclus", "Inclus", "Inclus"] },
+    { label: "Stories promotionnelles", values: ["En option", "2 stories", "4 stories", "3 stories live", "Campagne J-2", "Hebdomadaires"] },
+    { label: "Affiche & publication dédiée", values: ["En option", "En option", "Inclus", "En option", "Affiche VIP", "Pack mensuel"] },
+    { label: "Annonce officielle avant le live", values: ["—", "—", "—", "—", "48h avant", "Avant chaque live"] },
   ],
-  chat: [
-    { author: "Awa", text: "Bonjour ! Je découvre votre univers." },
-    { author: "Koffi", text: "Quelles sont les tailles disponibles ?" },
-    { author: "Mariam", text: "Le coffret est-il encore en stock ?" },
-    { author: "Ismaël", text: "Comment vous contacter après le live ?" },
-    { author: "OCD", text: "Merci à toutes et à tous pour vos questions." },
-  ],
-};
+  note: "Les tarifs, durées et prestations sont administrables par l'équipe OCD Live et confirmés lors de la validation de votre créneau.",
+} as const;
 
-/* ------------------------------------------------------------------- Secteurs */
 export const sectors = [
   { id: "mode", label: "Mode & accessoires" },
+  { id: "restauration", label: "Restauration" },
   { id: "beaute", label: "Beauté & soins" },
-  { id: "food", label: "Food & restauration" },
-  { id: "craft", label: "Artisanat & création" },
-  { id: "tech", label: "Tech & téléphones" },
-  { id: "services", label: "Services & prestations" },
+  { id: "artisanat", label: "Artisanat" },
+  { id: "tech", label: "Tech & commerce" },
+  { id: "services", label: "Services" },
 ] as const;
 
 export type SectorId = (typeof sectors)[number]["id"];
 
-export const sectorPhotos: { src: string; alt: string; sector: SectorId; caption: string }[] = [
-  { src: "/images/sector-fashion.jpg", alt: "Entrepreneuse dans sa boutique de vêtements, visuel d'illustration", sector: "mode", caption: "Mode & accessoires" },
-  { src: "/images/sector-beauty.jpg", alt: "Créatrice présentant ses soins en boutique, visuel d'illustration", sector: "beaute", caption: "Beauté & soins" },
-  { src: "/images/sector-food.jpg", alt: "Chef dressant un plat dans sa cuisine, visuel d'illustration", sector: "food", caption: "Food & restauration" },
-  { src: "/images/sector-artisan.jpg", alt: "Artisane créant des bijoux dans son atelier, visuel d'illustration", sector: "craft", caption: "Artisanat & création" },
-  { src: "/images/sector-tech.jpg", alt: "Commerçant montrant un téléphone dans sa boutique, visuel d'illustration", sector: "tech", caption: "Tech & téléphones" },
-  { src: "/images/sector-services.jpg", alt: "Créatrice de contenu dans son studio, visuel d'illustration", sector: "services", caption: "Services & prestations" },
+export const sectorPhotos: readonly {
+  src: string;
+  sector: SectorId;
+  alt: string;
+  caption: string;
+}[] = [
+  {
+    src: "/images/sector-fashion.jpg",
+    sector: "mode",
+    alt: "Présentation de tissus et vêtements colorés en boutique, photographie d'illustration",
+    caption: "Boutiques de vêtements, tissus et créations : montrez vos coupes et diffusez votre adresse.",
+  },
+  {
+    src: "/images/sector-food.jpg",
+    sector: "restauration",
+    alt: "Cheffe présentant des plats cuisinés, photographie d'illustration",
+    caption: "Exemple présentiel : préparez 30 à 45 portions, venez chez Bovann Shop et faites découvrir votre carte avec nos assistantes.",
+  },
+  {
+    src: "/images/sector-beauty.jpg",
+    sector: "beaute",
+    alt: "Gamme de soins cosmétiques disposée pour une démonstration, photographie d'illustration",
+    caption: "Cosmétiques et soins : expliquez les usages et indiquez comment commander dans votre ville.",
+  },
+  {
+    src: "/images/sector-artisan.jpg",
+    sector: "artisanat",
+    alt: "Artisane travaillant une pièce textile dans son atelier, photographie d'illustration",
+    caption: "Créateurs et ateliers : valorisez votre savoir-faire et recevez des commandes sur WhatsApp.",
+  },
+  {
+    src: "/images/sector-tech.jpg",
+    sector: "tech",
+    alt: "Démonstration d'un produit devant un smartphone sur trépied, photographie d'illustration",
+    caption: "Téléphones et électronique : démontrez vos produits en direct et partagez vos garanties.",
+  },
+  {
+    src: "/images/sector-services.jpg",
+    sector: "services",
+    alt: "Entrepreneuse présentant une offre de service en vidéo, photographie d'illustration",
+    caption: "Idéal aussi à distance depuis toute l'Afrique : votre assistante des lives OCD au Togo porte votre voix à l'écran.",
+  },
 ];
 
-/* ------------------------------------------------------ Détail des formules */
-export const comparison = {
-  columns: ["Découverte", "Visibilité", "Intensive"],
-  rows: [
-    { label: "Durée de diffusion", values: ["1 heure", "4 heures", "3 passages de 4 heures"] },
-    { label: "Nombre de passages", values: ["1", "1", "3 dans la semaine"] },
-    { label: "Présentation par l'entrepreneur", values: ["Oui", "Oui", "Oui"] },
-    { label: "Accompagnement technique", values: ["À confirmer", "À confirmer", "À confirmer"] },
-    { label: "Affiche, stories, décoration", values: ["En option", "En option", "En option"] },
-    { label: "Tarif indicatif", values: ["5 000 FCFA", "15 000 FCFA", "40 000 FCFA"] },
+export const liveDemo = {
+  steps: [
+    {
+      label: "00:00 · Ouverture",
+      title: "Présentation de votre entreprise",
+      text: "Introduction de votre activité, de votre ville/pays et du thème du direct sur House of Challenge.",
+    },
+    {
+      label: "00:15 · Produits",
+      title: "Démonstration en direct",
+      text: "Sur place chez Bovann Shop au Togo ou à distance avec votre assistante des lives OCD, vos offres sont mises en valeur.",
+    },
+    {
+      label: "00:45 · Échanges",
+      title: "Questions des spectateurs",
+      text: "Votre assistante des lives OCD dynamise l'audience et relaie les questions sur vos tarifs, tailles, portions ou livraisons.",
+    },
+    {
+      label: "01:10 · Visibilité",
+      title: "Diffusion de vos numéros & adresse",
+      text: "Mise en avant claire de votre téléphone pro, WhatsApp, adresse physique et réseaux sociaux.",
+    },
+    {
+      label: "01:25 · Conversion",
+      title: "Prise de contact directe",
+      text: "Les internautes repartent avec toutes vos coordonnées pour commander pendant et après le live.",
+    },
   ],
-  note: "Les inclusions, les prestations complémentaires et leurs tarifs restent à confirmer officiellement. Seules les durées et les prix annoncés lors de la présentation initiale sont repris ici.",
-};
+} as const;
 
-/* ---------------------------------------------------------------- FAQ */
 export const faqs = [
-  { q: "Qui présente mon activité pendant le live ?", a: "C'est vous, l'entrepreneur, qui présentez directement votre activité, vos produits et vos services. OCD prépare le cadre, assure la régie et vous accompagne techniquement pendant la diffusion." },
-  { q: "Combien de temps dure une présentation ?", a: "Selon la formule choisie : 1 heure, 4 heures, ou 3 passages de 4 heures dans la semaine. Ces durées reprennent les tarifs annoncés lors de la présentation initiale du projet et restent à confirmer officiellement." },
-  { q: "Les tarifs affichés sont-ils définitifs ?", a: "Non. Les 5 000, 15 000 et 40 000 FCFA sont des tarifs indicatifs annoncés lors de la présentation du projet. Ils doivent être confirmés, ainsi que les conditions de réservation et de paiement." },
-  { q: "Que dois-je préparer avant mon passage ?", a: "Vos produits, vos informations commerciales (prix, offres, disponibilités), votre présentation et les coordonnées que vous souhaitez rendre visibles. L'équipe s'occupe de l'espace et des équipements." },
-  { q: "Puis-je ajouter une affiche ou des stories ?", a: "Oui. Des prestations complémentaires — affiches, stories promotionnelles, décoration, accompagnement technique — peuvent être proposées selon vos besoins. Leurs conditions et leurs tarifs restent à préciser." },
-  { q: "L'audience annoncée est-elle garantie ?", a: "Non. House of Challenge est annoncée comme comptant entre 3 et 4 millions d'abonnés, mais ces chiffres ne garantissent ni le nombre de spectateurs pendant un live, ni les contacts, commandes ou ventes. Les statistiques d'audience et les modalités du partenariat restent à documenter." },
-  { q: "Comment réserver un créneau ?", a: "Les coordonnées officielles et les modalités de réservation sont encore à compléter. En attendant, le formulaire de cette page prépare un dossier de présentation de votre projet, que vous pouvez copier ou télécharger. Il ne s'agit pas d'une réservation." },
-  { q: "Mes informations sont-elles envoyées ou conservées ?", a: "Non : aucune donnée n'est envoyée depuis ce site. Si vous activez la conservation du brouillon, vos réponses restent uniquement dans votre navigateur et peuvent être effacées à tout moment avec le bouton prévu." },
-];
+  {
+    q: "Quelle est la différence entre le Live en Présentiel et le Live à Distance ?",
+    a: "En Présentiel, vous venez physiquement avec vos produits dans les locaux de Bovann Shop au Togo, accueilli par notre équipe et nos assistantes des lives OCD. À Distance (Cameroun, Tchad, Centrafrique, reste de l'Afrique et international), vous participez depuis votre boutique ou domicile tandis qu'une assistante des lives OCD présente au Togo vous accompagne, co-anime et porte votre activité tout au long du direct.",
+  },
+  {
+    q: "Quel est le rôle exact de l'assistante des lives OCD ?",
+    a: "Véritable ambassadrice commerciale de votre passage, votre assistante des lives OCD prépare votre intervention avant l'antenne, co-anime la présentation de vos produits, interagit avec les commentaires des internautes et rappelle régulièrement votre nom d'entreprise, vos numéros de téléphone et votre adresse physique — particulièrement précieux lorsque vous participez à distance depuis un autre pays.",
+  },
+  {
+    q: "À partir de quelle date puis-je réserver un créneau ?",
+    a: "Le calendrier interactif ouvre les réservations à partir du 1er décembre (selon le planning officiel administré par l'équipe OCD Live). Les dates disponibles, partiellement réservées ou complètes s'affichent en temps réel.",
+  },
+  {
+    q: "Comment le système évite-t-il les doubles réservations ?",
+    a: "Dès qu'un créneau horaire (1h30, 2h ou 4h) est réservé par un entrepreneur, il est immédiatement verrouillé dans notre base de données et ne peut plus être sélectionné par un autre participant sur la même plage horaire.",
+  },
+  {
+    q: "L'objectif est-il uniquement de vendre pendant le direct ?",
+    a: "Non : au-delà des ventes immédiates pendant le live, OCD Live est avant tout un outil puissant de communication et de visibilité commerciale pour faire connaître votre entreprise, présenter votre adresse physique, diffuser vos numéros de téléphone et attirer durablement de nouveaux clients.",
+  },
+  {
+    q: "Quelles sont les 6 formules commerciales proposées ?",
+    a: "OCD Live propose 6 packages progressifs : Formule Découverte (1h30), Formule Business (1h30 + pack visibilité contacts & stories), Visibilité Renforcée (2h + affiche & publication), Immersion 4 Heures (tarif avantageux), Formule VIP Projecteur (4h + annonce officielle 48h avant) et Partenaire Mensuel (4 lives dans le mois).",
+  },
+  {
+    q: "Que se passe-t-il juste après la validation de ma réservation ?",
+    a: "Vous obtenez immédiatement votre référence officielle de suivi (téléchargeable en .txt et ajoutable à votre agenda téléphone) et l'administration OCD Live reçoit instantanément votre notification complète pour valider votre passage et organiser le briefing.",
+  },
+  {
+    q: "Comment suivre ou modifier ma réservation ?",
+    a: "Vous pouvez consulter à tout moment le statut de votre dossier grâce au bouton « Suivre ma réservation » avec votre code de référence (ex. OCD-20261205-XXXX), ou contacter directement l'équipe sur WhatsApp au +228 79 79 02 29.",
+  },
+] as const;
 
+export interface Testimonial {
+  quote: string;
+  author: string;
+  business: string;
+  sector: string;
+}
+
+export const testimonials: readonly Testimonial[] = [];

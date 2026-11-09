@@ -139,12 +139,12 @@ export function ClipReveal({ src, alt, className, position = "center", caption }
 }
 
 /* --------------------------------------------------------- Image en parallaxe */
-export function ParallaxImage({ src, alt, className, position = "center", priority = false, amount = 38 }: {
+export function ParallaxImage({ src, alt, className, position = "center 12%", priority = false, amount = 22 }: {
   src: string; alt: string; className?: string; position?: string; priority?: boolean; amount?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const image = useRef<HTMLImageElement>(null);
-  const { current, failed, onError } = useImageFallback(src);
+  const { current, webpSrcSet, failed, onError } = useImageFallback(src);
   useScrollFrame(() => {
     if (!ref.current || !image.current) return;
     if (prefersReducedMotion()) { image.current.style.transform = "none"; return; }
@@ -152,16 +152,23 @@ export function ParallaxImage({ src, alt, className, position = "center", priori
     const height = window.innerHeight;
     if (rect.bottom < 0 || rect.top > height) return;
     const y = ((height - rect.top) / (height + rect.height) - 0.5) * amount;
-    image.current.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(1.06)`;
+    image.current.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(1.03)`;
   });
   return <div ref={ref} className={cn("parallax-image", failed && "smart-fallback", className)}>
-    {!failed && <img ref={image} src={current} width={1600} height={1000} onError={onError} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" style={{ objectPosition: position }} />}
+    {!failed && (webpSrcSet ? (
+      <picture className="smart-picture">
+        <source type="image/webp" srcSet={webpSrcSet} sizes="100vw" />
+        <img ref={image} src={current} width={1672} height={941} onError={onError} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" style={{ objectPosition: position, transformOrigin: position }} />
+      </picture>
+    ) : (
+      <img ref={image} src={current} width={1672} height={941} onError={onError} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" style={{ objectPosition: position, transformOrigin: position }} />
+    ))}
   </div>;
 }
 
 /* ------------------------- Scène photo épinglée, recouverte par la section suivante */
-export function PinnedStage({ src, alt, position, eyebrow, lines }: {
-  src: string; alt: string; position?: string; eyebrow: string; lines: Line[];
+export function PinnedStage({ src, alt, position = "center 10%", eyebrow, lines }: {
+  src: string; alt: string; position?: string; eyebrow?: string; lines: Line[];
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useScrollFrame(() => {
@@ -172,10 +179,10 @@ export function PinnedStage({ src, alt, position, eyebrow, lines }: {
     el.style.setProperty("--sp", clamp(-top / window.innerHeight).toFixed(4));
   });
   return <div ref={ref} className="stage">
-    <ParallaxImage src={src} alt={alt} position={position} className="stage-image" amount={60} />
+    <ParallaxImage src={src} alt={alt} position={position} className="stage-image" amount={18} />
     <div className="stage-shade" aria-hidden="true" />
     <div className="stage-caption">
-      <p className="stage-eyebrow"><span className="live-dot" aria-hidden="true" />{eyebrow}</p>
+      {eyebrow && <p className="stage-eyebrow">{eyebrow}</p>}
       <SplitTitle as="p" lines={lines} className="stage-title" stagger={60} />
     </div>
   </div>;
@@ -259,7 +266,7 @@ function MarqueeRow({ items, reverse = false, outline = false }: { items: string
 
 export function Marquee() {
   const items = ["Entrepreneurs", "Commerçants", "Artisans", "Créateurs", "Entreprises"];
-  const second = ["Lives commerciaux", "Publicité", "Affiches", "Stories", "Mise en scène", "Régie"];
+  const second = ["Lives commerciaux", "Publicité", "Affiches", "Stories", "Mise en scène", "Assistantes Live OCD"];
   return <div className="marquee-window" role="img" aria-label={`${items.join(", ")}. ${second.join(", ")}.`}>
     <MarqueeRow items={items} />
     <MarqueeRow items={second} reverse outline />
