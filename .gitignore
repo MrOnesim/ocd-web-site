@@ -3,3 +3,4 @@ dist/
 .verification/
 test-results/
 playwright-report/
+data/*.sqlite*

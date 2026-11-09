@@ -11,7 +11,7 @@ export function Audience() {
   return <section id="pour-qui" className="audience-section" aria-labelledby="audience-title">
     <SectionLabel label="À qui s'adresse OCD ?" index="04" />
     <div className="section-container audience-layout">
-      <ClipReveal className="audience-figure" src="/images/sector-artisan.jpg" position="center 40%"
+      <ClipReveal className="audience-figure" src="/images/sector-artisan.jpg" position="center 6%"
         alt="Une entrepreneuse dans son atelier textile, photographie d'illustration"
         caption="Le savoir-faire mérite de rencontrer son public." />
       <div className="audience-copy">

@@ -2,14 +2,14 @@ import { ActionLink, SectionLabel, SplitTitle } from "@/components/Primitives";
 import { track } from "@/lib/analytics";
 
 const topics = [
-  { label: "L'accompagnement", text: "Comment la préparation et la régie ont aidé l'entrepreneur à se sentir prêt." },
+  { label: "L'accompagnement", text: "Comment votre assistante des lives OCD a préparé et porté votre passage à l'écran." },
   { label: "Les échanges", text: "Ce que les questions du public ont permis de clarifier ou d'améliorer." },
   { label: "Les rendez-vous", text: "Les contacts obtenus, les retours constatés et les limites à garder en tête." },
 ];
 
 export function Voices() {
   return <section id="temoignages" className="voices-section" aria-labelledby="voices-title">
-    <SectionLabel label="La parole aux entrepreneurs" index="10" light />
+    <SectionLabel label="La parole aux entrepreneurs" index="08" light />
     <div className="section-container voices-layout">
       <div className="voices-mark" aria-hidden="true">“</div>
       <div className="voices-copy">

@@ -5,8 +5,8 @@ import { Reveal, ScrubText, SectionLabel, SplitTitle } from "@/components/Primit
 import { ambitions, metrics, pillars } from "@/data/content";
 
 export function Values() {
-  return <section className="values-section" aria-labelledby="values-title">
-    <SectionLabel label="Notre valeur ajoutée" index="07" />
+  return <section id="valeurs" className="values-section" aria-labelledby="values-title">
+    <SectionLabel label="Notre valeur ajoutée" index="07 · A" />
     <div className="section-container">
       <ScrubText id="values-title" className="scrub-statement"
         text="Quatre piliers pour offrir à chaque entrepreneur plus de visibilité, plus de proximité, plus d'accessibilité et plus d'opportunités."
@@ -22,7 +22,7 @@ const orbit = ["Entrepreneurs", "Lives", "Consommateurs", "Stories"];
 
 export function Ecosystem() {
   return <section id="ecosysteme" className="ecosystem-section" aria-labelledby="ecosystem-title">
-    <SectionLabel label="Notre écosystème de diffusion" index="08" light />
+    <SectionLabel label="Notre écosystème de diffusion" index="07" light />
     <div className="section-container">
       <SplitTitle id="ecosystem-title" className="display-title" lines={["Une communauté.", ["De nouvelles rencontres.", "text-accent"]]} />
       <div className="ecosystem-layout">
@@ -36,9 +36,9 @@ export function Ecosystem() {
             </div>
           </div>
         </div>
-        <Reveal delay={80} className="ecosystem-copy"><p>OCD envisage de s'appuyer sur la communauté numérique de <strong>House of Challenge</strong>, annoncée comme comptant entre <strong>3 et 4 millions d'abonnés</strong>.</p>
-          <p>L'ambition : rapprocher les professionnels d'une audience déjà constituée, pour transformer cette audience potentielle en une opportunité de visibilité.</p>
-          <div className="transparency-note"><p className="eyebrow">La transparence, avant tout</p><p>Le nombre d'abonnés annoncé ne garantit pas le nombre de spectateurs pendant les lives. Les statistiques d'audience et les modalités du partenariat restent à documenter.</p></div>
+        <Reveal delay={80} className="ecosystem-copy"><p>OCD Live diffuse l&apos;ensemble des sessions sur le compte officiel de <strong>House of Challenge</strong>, annoncé comme rassemblant entre <strong>3 et 4 millions d&apos;abonnés</strong>, en synergie avec les locaux physiques de <strong>Bovann Shop au Togo</strong> et l&apos;accompagnement sur mesure de nos <strong>assistantes des lives OCD</strong>.</p>
+          <p>En présentiel au Togo comme à distance depuis le Cameroun, le Tchad, la Centrafrique ou l&apos;international, chaque entrepreneur bénéficie de cette audience constituée pour faire connaître sa marque et diffuser ses coordonnées.</p>
+          <div className="transparency-note"><p className="eyebrow">La transparence, avant tout</p><p>Le nombre d&apos;abonnés annoncé ne garantit pas un volume fixe de ventes pendant le live : OCD Live agit avant tout comme un puissant levier de notoriété, de communication et d&apos;opportunités commerciales.</p></div>
         </Reveal>
       </div>
     </div>
@@ -47,7 +47,7 @@ export function Ecosystem() {
 
 export function Perspectives() {
   return <section id="perspectives" className="perspectives-section" aria-labelledby="perspectives-title">
-    <SectionLabel label="Objectifs & perspectives" index="09" />
+    <SectionLabel label="Objectifs & perspectives" index="07 · B" />
     <div className="section-container perspectives-layout">
       <div>
         <SplitTitle id="perspectives-title" className="display-title" lines={["Grandir ensemble.", ["Mesurer le chemin.", "text-muted"]]} />

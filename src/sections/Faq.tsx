@@ -8,14 +8,15 @@ import { cn } from "@/utils/cn";
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
-
   return <section id="faq" className="faq-section" aria-labelledby="faq-title">
-    <SectionLabel label="Questions fréquentes" index="11" />
+    <SectionLabel label="Questions fréquentes" index="09" />
     <div className="section-container faq-layout">
       <div className="faq-intro">
         <SplitTitle id="faq-title" className="display-title" lines={["Tout ce qu'il faut", ["savoir avant de vous lancer.", "text-muted"]]} />
-        <Reveal delay={120}><p className="section-description">Une réponse manque ? Écrivez-nous : nous ajouterons les précisions nécessaires lorsque les coordonnées officielles seront disponibles.</p>
-          <a href="#contact" className="text-link">Poser une autre question<ArrowUpRight size={17} aria-hidden="true" /></a></Reveal>
+        <Reveal delay={120}>
+          <p className="section-description">Une question précise sur le déroulement, votre secteur ou les options complémentaires ? Préparez votre dossier ou contactez directement l'équipe OCD.</p>
+          <a href="#contact" className="text-link">Poser une autre question<ArrowUpRight size={17} aria-hidden="true" /></a>
+        </Reveal>
       </div>
       <div className="faq-list">
         {faqs.map((item, index) => {
